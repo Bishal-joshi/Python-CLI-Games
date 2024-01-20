@@ -1,4 +1,5 @@
 import random
+import os
 print("Welcome to the KBC Game")
 gamestart=input("Do you want to start the game? y/n")
 
@@ -49,25 +50,38 @@ answers = [
 ]
 
 
-def playgame():
-    random_number=random.randint(0,19)
-    print(questions[random_number])
-    
-    options=[answers[random.randint(0,19)] for _ in range(3)]
-    options.append(answers[random_number])
-    random.shuffle(options)
-    # print(options)
-    for index,option in enumerate(options):
-        print(f"{index+1} {option}")
+score=int(0)
 
+def playgame():
+        global score
     
-    answer=input()
-    
-    pass
+        random_number=random.randint(0,19)
+        print(questions[random_number])
+        
+        options=[answers[random.randint(0,19)] for _ in range(3)]
+        options.append(answers[random_number])
+        random.shuffle(options)
+        # print(options)
+        for index,option in enumerate(options):
+            print(f"{index+1} {option}")
+
+        
+        answer=int(input())
+        if(options[answer-1]==answers[random_number]):
+            print("correct answer")
+            score +=1
+            os.system('cls')
+            print("Score= "+str(score))
+            playgame()
+        else:
+            print("Incorrect answer")
+            print("Score= "+str(score))
+            input()
+            
 # if no then exit the game
 if gamestart.lower() == "y" :
     playgame()
-    print("ok here is your score")
+    print("ok here is your score "+score)
 else:
     print("thank you........")
 
