@@ -3,6 +3,7 @@ import os
 print("Welcome to the KBC Game")
 gamestart=input("Do you want to start the game? y/n")
 
+
 questions = [
     "Which planet is known as the 'Red Planet'?",
     "Who wrote the play 'Romeo and Juliet'?",
